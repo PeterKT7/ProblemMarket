@@ -16,7 +16,7 @@
     const decimals = parseInt(el.dataset.decimals) || 0;
     const useComma = el.dataset.format === 'comma';
     const delay    = parseInt(el.dataset.delay)    || 0;
-    const duration = target >= 500 ? 3000 : target >= 50 ? 2200 : 1600;
+    const duration = target >= 500 ? 4800 : target >= 50 ? 3200 : 2200;
 
     function fmt(n) {
       if (useComma) return prefix + Math.round(n).toLocaleString('en-US') + suffix;
@@ -28,11 +28,14 @@
       const t0 = performance.now();
       function tick(now) {
         const p = Math.min((now - t0) / duration, 1);
-        // Phase 1 (0–25%): linear burst to 65% of value — fast, visible brrrr
-        // Phase 2 (25–100%): easeOutQuad crawl for the remaining 35% — very slow landing
-        const ease = p >= 1 ? 1 : p < 0.25
-          ? p * 2.6
-          : 0.65 + 0.35 * (1 - Math.pow(1 - (p - 0.25) / 0.75, 2));
+        // Phase 1 (0–18%): linear burst to 60% of value — fast, visible brrrr
+        // Phase 2 (18–55%): easeOutQuad crawl to 90%
+        // Phase 3 (55–100%): easeOutSeptic — giga slow landing
+        const ease = p >= 1 ? 1 : p < 0.18
+          ? p * 3.33
+          : p < 0.55
+            ? 0.60 + 0.30 * (1 - Math.pow(1 - (p - 0.18) / 0.37, 2))
+            : 0.90 + 0.10 * (1 - Math.pow(1 - (p - 0.55) / 0.45, 7));
         el.textContent = fmt(target * ease);
         if (p < 1) requestAnimationFrame(tick);
         else el.textContent = fmt(target);
