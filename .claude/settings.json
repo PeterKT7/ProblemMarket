@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -I -H 'Authorization: token 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' https://api.github.com/user)",
+      "Bash(curl -s -H 'Authorization: token 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' https://api.github.com/repos/PeterKT7/ProblemMarket)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('permissions:', d.get\\('permissions'\\)\\); print\\('message:', d.get\\('message','ok'\\)\\)\")",
+      "Bash(curl -s -H 'Authorization: token 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' https://api.github.com/repos/PeterKT7/ProblemMarket/git/refs)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(type\\(d\\), d[:2] if isinstance\\(d, list\\) else d\\)\")"
+    ]
+  }
+}

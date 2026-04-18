@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/usr/bin/git --version)",
+      "Read(//usr/local/bin/**)",
+      "Bash(brew list *)"
+    ]
+  }
+}

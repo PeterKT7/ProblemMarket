@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProblemMarket — A marketplace for the world's most valuable problems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- top utility ribbon -->
+  <div class="ribbon">
+    <div class="ribbon-inner">
+      <div class="micro">
+        <span>142 cases active</span>
+        <span>31 industries</span>
+        <span class="live">14 open for pledging</span>
+      </div>
+      <div class="micro">
+        <span>For solvers · founders · grant officers · sovereign funds</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <nav class="masthead-left">
+        <a href="#browse">Browse</a>
+        <a href="#mechanism">Mechanism</a>
+        <a href="#numbers">Ledger</a>
+        <a href="#" data-open="page-modal-about">About</a>
+      </nav>
+      <div class="wordmark">ProblemMarket<sup>™</sup></div>
+      <nav class="masthead-right">
+        <a href="#" class="auth-cta" data-open="page-modal-submit">Post a problem</a>
+        <a href="#">Sign in</a>
+      </nav>
+      <button class="hamburger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- mobile nav drawer -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <button class="mobile-nav-close" aria-label="Close navigation">×</button>
+    <a href="#browse" class="mobile-nav-link">Browse</a>
+    <a href="#mechanism" class="mobile-nav-link">Mechanism</a>
+    <a href="#numbers" class="mobile-nav-link">Ledger</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#" class="mobile-nav-link" data-open="page-modal-submit">Post a problem</a>
+    <a href="#" class="mobile-nav-link" data-open="page-modal-about">About</a>
+    <a href="#" class="mobile-nav-link auth-cta-mobile">Sign in</a>
+  </div>
+
+  <!-- hero -->
+  <section class="hero">
+    <div>
+      <h1 class="display reveal">
+        The world's most<br/>
+        valuable problems,<br/>
+        <em>posted publicly.</em>
+      </h1>
+      <p class="hero-deck reveal">
+        Companies post the questions that could define their next decade and put a bounty behind them. Solvers — labs, freelancers, syndicates — bid, build, and claim it. Funded by dominant assurance, settled in escrow, judged by a panel that doesn't move.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#browse" class="btn">Browse the docket <span class="arrow">→</span></a>
+        <a href="#mechanism" class="btn ghost">How it works <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <aside class="hero-side reveal">
+      <div class="hero-side-block">
+        <h4>Open bounty pool</h4>
+        <div class="stat mono count-num" data-count-to="847.2" data-prefix="$" data-suffix="M" data-decimals="1" data-delay="120">$847.2M</div>
+        <div class="stat-sub">across 142 active cases · 31 industries</div>
+      </div>
+      <div class="hero-side-block">
+        <h4>Median disclosure</h4>
+        <div class="stat count-num" data-count-to="11" data-suffix=" days" data-delay="280">11 days</div>
+        <div class="stat-sub">from intake interview to public listing</div>
+      </div>
+      <div class="hero-side-block">
+        <h4>Dispatched to date</h4>
+        <div class="stat count-num" data-count-to="214" data-prefix="$" data-suffix="M" data-delay="440">$214M</div>
+        <div class="stat-sub">paid to 89 solver entities since 2024</div>
+      </div>
+      <div class="hero-side-quote">
+        "We don't take 10% of a contract. We take 4% of an answer that didn't exist before we asked for it."
+      </div>
+    </aside>
+  </section>
+
+  <div class="featured-wrap">
+    <div class="featured reveal">
+      <div class="featured-left">
+        <div class="tagline">CASE Nº 042 · OPENED 9 DAYS AGO · CRITICAL</div>
+        <h2>
+          The FDA doesn't recognise<br/>
+          <em>ageing</em> as a disease.<br/>
+          <span class="u-cta">Change that.</span>
+        </h2>
+        <p class="lede">
+          No drug can be approved to treat biological ageing directly — because regulators don't recognise it as a condition. Every longevity therapeutic in development is forced to target a downstream disease instead, which means the upstream cause goes unfunded and untrialled. A consortium of longevity researchers and biotech firms wants the scientific, policy, and trial-design framework that removes this blockage — for good. The bounty grows by $200,000 every 30 days the case stays open.
+        </p>
+        <div class="featured-tags">
+          <span class="tag">Longevity</span>
+          <span class="tag">Regulatory policy</span>
+          <span class="tag">FDA pathway</span>
+          <span class="tag">Trial design</span>
+          <span class="tag">Scientific consensus</span>
+        </div>
+      </div>
+
+      <aside class="dossier">
+        <h5>Dossier — Case 042</h5>
+        <div class="dossier-row"><span class="k">Sponsor</span><span class="v sponsor-italic">Longevity research consortium</span></div>
+        <div class="dossier-row"><span class="k">Posted</span><span class="v v-mono">2026.04.08</span></div>
+        <div class="dossier-row"><span class="k">Deadline</span><span class="v v-mono">2028.04.08</span></div>
+        <div class="dossier-row"><span class="k">Solvers</span><span class="v v-mono">82 active · 5 syndicates</span></div>
+
+        <div class="bounty-big"><span class="currency">USD</span><span id="featured-bounty">14,000,000</span></div>
+        <div class="bounty-meta">+ $300K monthly escalator · published in escrow</div>
+
+        <div class="progress-wrap">
+          <div class="progress-bar-wrap">
+            <span class="threshold-label">Activation threshold</span>
+            <div class="progress-bar"><div class="progress-fill" data-fill="74"></div></div>
+          </div>
+          <div class="progress-meta">
+            <span>Pledged · $8.9M / $12M</span>
+            <span>74%</span>
+          </div>
+        </div>
+
+        <div class="dossier-cta">
+          <button class="btn" id="open-case-modal">View brief <span class="arrow">→</span></button>
+          <button class="btn ghost" data-open="page-modal-pledge">Pledge</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- section: browse -->
+  <div class="section-head" id="browse">
+    <div class="title">The <em>docket</em>.</div>
+    <div class="meta">142 active cases. The eight below are this week's most-watched. Refreshed every Tuesday at 09:00 ET.</div>
+  </div>
+
+  <div class="grid-wrap">
+    <div class="filter-bar">
+      <span class="label">Filter</span>
+      <button class="chip active" data-group="filter">All cases</button>
+      <button class="chip" data-group="filter">Open</button>
+      <button class="chip" data-group="filter">Funded</button>
+      <button class="chip" data-group="filter">Dispatched</button>
+      <span class="label label-right">Sort by</span>
+      <button class="chip active" data-group="sort">Bounty ↓</button>
+      <button class="chip" data-group="sort">Posted ↓</button>
+      <button class="chip" data-group="sort">Solvers ↓</button>
+    </div>
+
+    <div class="problem-grid">
+
+      <article class="problem-card reveal" data-status="open" data-bounty="6.2" data-case="37" data-solvers="34" data-case-id="037">
+        <div class="card-head">
+          <span class="case-no">Nº 037</span>
+          <span class="stamp">OPEN</span>
+        </div>
+        <h3>Design a single-lane autonomous tunnel system that undercuts metro rail cost by 90%.</h3>
+        <p class="sponsor">Urban Mobility Consortium · 6 city governments · cost benchmark against London Crossrail per km.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>6.2M</div>
+          <div class="right">34 solvers<br/><strong>140 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="open" data-bounty="3.4" data-case="38" data-solvers="112" data-case-id="038">
+        <div class="card-head">
+          <span class="case-no">Nº 038</span>
+          <span class="stamp">OPEN</span>
+        </div>
+        <h3>Produce a reproducible 4-day workweek transition methodology with no output loss.</h3>
+        <p class="sponsor">Future of Work Coalition · 14 participating employers · validated across 250+ person orgs.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>3.4M</div>
+          <div class="right">112 solvers<br/><strong>94 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="funded" data-bounty="7.1" data-case="39" data-solvers="19" data-case-id="039">
+        <div class="card-head">
+          <span class="case-no">Nº 039</span>
+          <span class="stamp funded">FUNDED</span>
+        </div>
+        <h3>Design a UBI model that is fiscally self-sustaining in a mid-sized OECD economy.</h3>
+        <p class="sponsor">Economic Policy Research Consortium · modelled against 5 OECD member economies · no increase in inequality.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>7.1M</div>
+          <div class="right">19 solvers<br/><strong>178 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="open" data-bounty="4.5" data-case="40" data-solvers="67" data-case-id="040">
+        <div class="card-head">
+          <span class="case-no">Nº 040</span>
+          <span class="stamp">OPEN</span>
+        </div>
+        <h3>Forecast AI's net employment effect across five industries to ≥80% accuracy over 5 years.</h3>
+        <p class="sponsor">Global Labour Economics Institute · industries: legal, logistics, healthcare admin, media, finance.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>4.5M</div>
+          <div class="right">67 solvers<br/><strong>213 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="funded" data-bounty="3.3" data-case="41" data-solvers="88" data-case-id="041">
+        <div class="card-head">
+          <span class="case-no">Nº 041</span>
+          <span class="stamp funded">FUNDED</span>
+        </div>
+        <h3>Explain Norway's 20% prison recidivism rate and produce a transplant model for anglophone jurisdictions.</h3>
+        <p class="sponsor">Criminal Justice Reform Fund · benchmarked against UK, US, and Australia · policy-level deliverable.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>3.3M</div>
+          <div class="right">88 solvers<br/><strong>61 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="open" data-bounty="8.4" data-case="43" data-solvers="31" data-case-id="043">
+        <div class="card-head">
+          <span class="case-no">Nº 043</span>
+          <span class="stamp">OPEN</span>
+        </div>
+        <h3>Build an interpretability framework that predicts frontier AI model outputs in novel domains before deployment.</h3>
+        <p class="sponsor">AI Safety Research Consortium · ≥85% accuracy threshold · independent red-team validation required.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>8.4M</div>
+          <div class="right">31 solvers<br/><strong>287 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="open" data-bounty="5.1" data-case="44" data-solvers="23" data-case-id="044">
+        <div class="card-head">
+          <span class="case-no">Nº 044</span>
+          <span class="stamp">OPEN</span>
+        </div>
+        <h3>Reduce pedestrian fatalities in mixed-traffic urban environments by 70% without restricting vehicle access.</h3>
+        <p class="sponsor">Global Road Safety Foundation · 8 pilot cities · infrastructure cost cap of $2M per km.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>5.1M</div>
+          <div class="right">23 solvers<br/><strong>156 days left</strong></div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" data-status="dispatched" data-bounty="6.7" data-case="45" data-solvers="0" data-case-id="045">
+        <div class="card-head">
+          <span class="case-no">Nº 045</span>
+          <span class="stamp dispatched">DISPATCHED</span>
+        </div>
+        <h3>Real-time AI-generated content detection across text, image, and audio with ≤1% false positive rate.</h3>
+        <p class="sponsor">Media Integrity Coalition · awarded to a seven-person syndicate, February 2026.</p>
+        <div class="card-foot">
+          <div class="bounty"><span class="c">$</span>6.7M</div>
+          <div class="right">solved<br/><strong>14 days early</strong></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- section: mechanism -->
+  <section class="mechanism" id="mechanism">
+    <div class="inner">
+      <div class="mechanism-head">
+        <h2>Four moves<br/>between a <em>question</em><br/>and a payout.</h2>
+        <p class="deck">
+          Anyone can post a problem. Almost no one's problem makes it onto the docket. The screen is brutal on purpose: we interview every submission, throw out the vague and the vanity, and only publish what would still matter if the company didn't exist. The work happens in public. The money sits in escrow until it doesn't have to.
+        </p>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step">
+          <div class="num">01</div>
+          <h4>Intake interview</h4>
+          <p>A two-hour structured interview with the sponsor. We strip away symptoms until we find the real problem. ~93% of submissions are rejected here.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h4>Public posting</h4>
+          <p>The problem goes live with clear success criteria, a named judging panel, and nothing left vague. No "transform our customer experience" briefs. Either the threshold is met or it isn't.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h4>Solver bidding</h4>
+          <p>Solvers — individuals, labs, consortia — register interest, propose an approach, and post a refundable deposit. Open work threads are visible. Closed-source solvers can work under NDA.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h4>Adjudication & payout</h4>
+          <p>The panel scores against the pre-agreed criteria. Winning solver receives the bounty minus a 4% platform fee. Losing solvers get their deposit back, plus a share if their work informed the winner.</p>
+        </div>
+      </div>
+
+      <div class="dac reveal">
+        <div>
+          <div class="label">Funding mechanism</div>
+          <h3>Dominant assurance, <em>baked in.</em></h3>
+        </div>
+        <div>
+          <p>Big problems rarely have a single sponsor. ProblemMarket pools capital across companies that share the problem, using a <strong>dominant assurance contract</strong>: each pledge is refundable until the bounty threshold is met, and pledgers earn a small bonus if the threshold <em>fails</em>.</p>
+          <p>The bonus flips the freerider problem. Pledging early is now the rational move whether the pool fills or doesn't — which is exactly why the pool fills. We didn't invent this; <a href="https://en.wikipedia.org/wiki/Assurance_contract#Dominant_assurance_contracts">Alex Tabarrok did, in 1998</a>. We just operationalize it.</p>
+        </div>
+      </div>
+
+      <div class="dac-flow reveal">
+        <div class="dac-flow-label">How the contract works</div>
+        <div class="dac-flow-steps">
+          <div class="dac-flow-step">
+            <div class="dac-flow-num">01</div>
+            <div class="dac-flow-text">
+              <strong>Sponsor posts problem</strong>
+              <span>Sets a bounty target and deposits into escrow. Nothing is paid until the pool threshold is met.</span>
+            </div>
+          </div>
+          <div class="dac-flow-connector">→</div>
+          <div class="dac-flow-step">
+            <div class="dac-flow-num">02</div>
+            <div class="dac-flow-text">
+              <strong>Pledgers commit capital</strong>
+              <span>Co-sponsors add to the pool. Every pledge is <em>refundable</em> — no capital moves until the threshold is crossed.</span>
+            </div>
+          </div>
+          <div class="dac-flow-connector">→</div>
+          <div class="dac-flow-step dac-flow-step-branch">
+            <div class="dac-flow-num">03</div>
+            <div class="dac-flow-text">
+              <strong>Pool reaches threshold?</strong>
+              <span>This is the decision point. Two outcomes — both rational to have pledged.</span>
+            </div>
+          </div>
+        </div>
+        <div class="dac-flow-outcomes">
+          <div class="dac-outcome dac-outcome-yes">
+            <div class="dac-outcome-tag">Yes — pool activates</div>
+            <p>Case goes live to solvers. Bounty is drawn from escrow on adjudication. Winning solver is paid; all pledges are honoured.</p>
+          </div>
+          <div class="dac-outcome dac-outcome-no">
+            <div class="dac-outcome-tag">No — pool fails</div>
+            <p>Every pledger receives a full refund <strong>plus a 6% bonus</strong> on their committed amount. No problem is posted. No money lost. Positive return for taking the risk of pledging early.</p>
+          </div>
+        </div>
+        <div class="dac-flow-note">This is why the pools fill: pledging early is dominant regardless of outcome. You either fund a solution or you profit from trying.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- section: numbers -->
+  <section class="numbers-wrap" id="numbers">
+    <div class="numbers-head">
+      <h2>The <em>ledger</em><br/>since launch.</h2>
+      <p class="meta">All figures verified against escrow records. Solver names redacted by default; sponsors' identities released on resolution unless flagged confidential.</p>
+    </div>
+    <div class="numbers reveal">
+      <div class="number-cell">
+        <div class="label">Active bounty pool</div>
+        <div class="figure"><span class="count-num count-viewport" data-count-to="847" data-delay="0">847</span><span class="unit">M USD</span></div>
+        <div class="note">across 142 cases</div>
+      </div>
+      <div class="number-cell">
+        <div class="label">Dispatched, lifetime</div>
+        <div class="figure"><span class="count-num count-viewport" data-count-to="214" data-delay="120">214</span><span class="unit">M USD</span></div>
+        <div class="note">to 89 winning entities</div>
+      </div>
+      <div class="number-cell">
+        <div class="label">Median time to solve</div>
+        <div class="figure"><span class="count-num count-viewport" data-count-to="217" data-delay="240">217</span><span class="unit">days</span></div>
+        <div class="note">from listing to adjudication</div>
+      </div>
+      <div class="number-cell">
+        <div class="label">Solver base</div>
+        <div class="figure"><span class="count-num count-viewport" data-count-to="3418" data-format="comma" data-delay="360">3,418</span><span class="unit">verified</span></div>
+        <div class="note">in 47 countries</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pull quote -->
+  <section class="pullquote">
+    <q>We had been paying a Big Three consultancy seven figures a year to tell us what we already knew. ProblemMarket sent us four serious solvers in six weeks, and one of them is now the head of our R&amp;D group.</q>
+    <div class="attr"><span>VP, R&amp;D</span> · Fortune 100 industrial · Case Nº 029, dispatched 2025</div>
+  </section>
+
+  <!-- CTA strip -->
+  <section class="cta-strip" id="post">
+    <h2>Have a problem worth <em>millions?</em></h2>
+    <p>Two hours of your time, no money down. We either publish it or tell you honestly why we won't.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn" data-open="page-modal-submit">Submit a problem <span class="arrow">→</span></a>
+      <a href="#" class="btn" data-open="page-modal-solver">Apply as a solver <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer id="about">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-mark">ProblemMarket<sup>™</sup></div>
+        <p class="footer-tag">A marketplace for the world's most valuable unsolved problems. Operated independently. No sponsor on the editorial board. No solver on the board of directors.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Marketplace</h5>
+        <a href="#browse">The docket</a>
+        <a href="#mechanism">How it works</a>
+        <a href="#" data-open="page-modal-submit">Post a problem</a>
+        <a href="#" data-open="page-modal-solvers">Solver directory</a>
+        <a href="#" data-open="page-modal-panel">Adjudication panel</a>
+      </div>
+      <div class="footer-col">
+        <h5>Reading room</h5>
+        <a href="#">Case studies</a>
+        <a href="#">On dominant assurance</a>
+        <a href="#">Why most RFPs fail</a>
+        <a href="#" data-open="page-modal-handbook">The intake handbook</a>
+        <a href="#">Quarterly ledger</a>
+      </div>
+      <div class="footer-col">
+        <h5>House</h5>
+        <a href="#" data-open="page-modal-about">About</a>
+        <a href="#">Press &amp; mentions</a>
+        <a href="#">Editorial standards</a>
+        <a href="#" data-open="page-modal-careers">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ProblemMarket · Tampa · Oslo · NYC</span>
+      <span>v0.1 — MVP · designed in 2026</span>
+    </div>
+  </footer>
+
+  <!-- docket card detail modal (dynamic) -->
+  <div class="modal-bg" id="card-modal">
+    <div class="modal">
+      <button class="modal-close" id="close-card-modal">×</button>
+      <div class="modal-meta">
+        <span class="micro" id="cm-no"></span>
+        <span class="micro">·</span>
+        <span class="micro" id="cm-opened"></span>
+        <span class="micro">·</span>
+        <span class="stamp" id="cm-stamp"></span>
+      </div>
+      <h2 id="cm-title"></h2>
+      <p class="sponsor-line" id="cm-sponsor"></p>
+      <div class="modal-body">
+        <div id="cm-body"></div>
+        <aside class="modal-side">
+          <div class="modal-side-label">Total bounty</div>
+          <div class="bounty-big bounty-big-modal"><span class="currency">USD</span><span id="cm-bounty"></span></div>
+          <div class="bounty-meta" id="cm-bounty-meta"></div>
+          <div class="dossier-row dotted-row"><span class="k">Status</span><span class="v v-small" id="cm-status-v"></span></div>
+          <div class="dossier-row dotted-row"><span class="k">Solvers</span><span class="v v-small" id="cm-solvers"></span></div>
+          <div class="dossier-row dotted-row"><span class="k">Deadline</span><span class="v v-small v-mono" id="cm-deadline"></span></div>
+          <div class="dossier-row dotted-row"><span class="k">Platform fee</span><span class="v v-small">4%</span></div>
+          <div id="cm-cta-wrap">
+            <button class="btn modal-cta-primary" data-open="page-modal-solver">Register as solver <span class="arrow">→</span></button>
+            <button class="btn ghost modal-cta-ghost" data-open="page-modal-pledge">Add to pledge pool</button>
+          </div>
+        </aside>
+      </div>
+      <div class="modal-footer" id="cm-footer">
+        <p class="modal-footer-label" id="cm-footer-label"></p>
+        <button class="btn" data-open="page-modal-solver">Register as solver <span class="arrow">→</span></button>
+        <button class="btn ghost" data-open="page-modal-pledge">Pledge to pool</button>
+      </div>
+      <div class="follow-case" id="cm-follow">
+        <div class="follow-case-form" id="cm-follow-form">
+          <span class="follow-case-label">Follow this case</span>
+          <div class="follow-case-input-row">
+            <input class="follow-case-input" type="email" id="cm-follow-email" placeholder="your@email.com" />
+            <button class="btn follow-case-btn" id="cm-follow-submit">Notify me <span class="arrow">→</span></button>
+          </div>
+          <p class="follow-case-hint">Get one email when status changes — solver registered, pool updates, or case dispatched. No other mail.</p>
+        </div>
+        <div class="follow-case-success" id="cm-follow-success" style="display:none">
+          <span class="follow-case-success-check">✓</span>
+          <span>You're following this case. We'll email you on status changes.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal -->
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <button class="modal-close" id="close-case-modal">×</button>
+
+      <div class="modal-meta">
+        <span class="micro">CASE Nº 042</span>
+        <span class="micro">·</span>
+        <span class="micro">OPENED 2026.04.08</span>
+        <span class="micro">·</span>
+        <span class="stamp">OPEN</span>
+      </div>
+
+      <h2>The FDA doesn't recognise ageing as a disease. <em>Build the case</em> that changes that.</h2>
+      <p class="sponsor-line">Sponsor: Longevity research consortium · 4 biotech firms, 2 sovereign health funds, 1 academic medical centre · published with legal counsel approval.</p>
+
+      <div class="modal-body">
+        <div>
+          <p><strong>The blockage.</strong> The FDA has no approved indication for biological ageing. This forces every longevity therapeutic into a downstream disease trial — cardiovascular, diabetes, cancer — which takes longer, costs more, and misses the upstream mechanism entirely. The TAME metformin trial was the first attempt to argue ageing as a trial endpoint. It proved the argument is makeable. No one has closed it.</p>
+          <p><strong>What "won" looks like.</strong> A deliverable package — scientific consensus paper, draft regulatory guidance, and a template Phase II trial design using validated biological age endpoints — that is formally accepted onto an FDA Center for Drug Evaluation and Research advisory agenda within 18 months of submission. The package must hold up to adversarial peer review and be co-signed by a minimum of 40 relevant domain experts.</p>
+
+          <h4>Success criteria, prereg'd</h4>
+          <ul>
+            <li>Peer-reviewed consensus paper with ≥40 signatories across geroscience, regulatory science, and bioethics</li>
+            <li>Draft regulatory guidance document reviewed and acknowledged by CDER in writing</li>
+            <li>Template trial design using ≥2 validated biological age endpoints (e.g. GrimAge, DunedinPACE)</li>
+            <li>Published in a Nature- or Science-family journal, or equivalent impact</li>
+            <li>Formal placement on an FDA advisory committee agenda within 18 months</li>
+          </ul>
+
+          <h4>What's already been ruled out</h4>
+          <ul>
+            <li>Pure advocacy documents without peer-reviewed scientific grounding</li>
+            <li>Approaches requiring an Act of Congress or statutory change (scope too large)</li>
+            <li>TAME-style single-drug proposals (too narrow; a general pathway is required)</li>
+          </ul>
+
+          <h4>What sponsors will provide</h4>
+          <ul>
+            <li>Legal and regulatory affairs counsel with prior FDA advisory experience</li>
+            <li>Introductions to CDER staff and FDA advisory committee members</li>
+            <li>Funding for data analysis, publication fees, and expert convening costs</li>
+            <li>Platform and co-authorship; all IP and attribution retained by the solver team</li>
+          </ul>
+        </div>
+
+        <aside class="modal-side">
+          <div class="modal-side-label">Total bounty</div>
+          <div class="bounty-big bounty-big-modal"><span class="currency">USD</span>14.0M</div>
+          <div class="bounty-meta">+ $300K monthly escalator</div>
+
+          <div class="progress-wrap progress-wrap-modal">
+            <div class="progress-bar-wrap">
+              <span class="threshold-label">Activation threshold</span>
+              <div class="progress-bar"><div class="progress-fill modal-fill" data-fill="74"></div></div>
+            </div>
+            <div class="progress-meta">
+              <span>$10.4M pledged</span>
+              <span>74%</span>
+            </div>
+          </div>
+
+          <div class="dossier-row dotted-row">
+            <span class="k">Active solvers</span><span class="v v-small">82</span>
+          </div>
+          <div class="dossier-row dotted-row">
+            <span class="k">Syndicates</span><span class="v v-small">5</span>
+          </div>
+          <div class="dossier-row dotted-row">
+            <span class="k">Deadline</span><span class="v v-small v-mono">2028.04.08</span>
+          </div>
+          <div class="dossier-row dotted-row">
+            <span class="k">Platform fee</span><span class="v v-small">4%</span>
+          </div>
+
+          <button class="btn modal-cta-primary" data-open="page-modal-solver">Register as solver <span class="arrow">→</span></button>
+          <button class="btn ghost modal-cta-ghost" data-open="page-modal-pledge">Add to pledge pool</button>
+        </aside>
+      </div>
+
+      <div class="modal-footer">
+        <p class="modal-footer-label">Ready to contribute to the longevity case?</p>
+        <button class="btn" data-open="page-modal-solver">Register as solver <span class="arrow">→</span></button>
+        <button class="btn ghost" data-open="page-modal-pledge">Pledge to pool</button>
+      </div>
+      <div class="follow-case" id="modal-042-follow">
+        <div class="follow-case-form" id="modal-042-follow-form">
+          <span class="follow-case-label">Follow this case</span>
+          <div class="follow-case-input-row">
+            <input class="follow-case-input" type="email" id="modal-042-follow-email" placeholder="your@email.com" />
+            <button class="btn follow-case-btn" id="modal-042-follow-submit">Notify me <span class="arrow">→</span></button>
+          </div>
+          <p class="follow-case-hint">Get one email when status changes — solver registered, pool updates, or case dispatched. No other mail.</p>
+        </div>
+        <div class="follow-case-success" id="modal-042-follow-success" style="display:none">
+          <span class="follow-case-success-check">✓</span>
+          <span>You're following Case 042. We'll email you on status changes.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pledge flow modal -->
+  <div class="page-modal-bg" id="page-modal-pledge">
+    <div class="page-modal page-modal-pledge-card">
+      <button class="page-modal-close" data-close="page-modal-pledge">×</button>
+      <div class="pledge-flow">
+
+        <!-- step 1: amount -->
+        <div class="pledge-step" id="pledge-step-1">
+          <div class="pledge-case-label micro" id="pledge-case-label">CASE Nº 042</div>
+          <h2>Choose your pledge amount.</h2>
+          <p class="pledge-deck">Your pledge is held as intent. It is drawn only if the pool reaches the <span id="pledge-target-label">$12M</span> activation threshold by <span id="pledge-deadline-label">2027.04.08</span>. If the pool fails, you receive a 6% bonus on your pledged amount — no risk, rational upside.</p>
+          <div class="pledge-tiers">
+            <button class="pledge-tier" data-amount="10000">$10K</button>
+            <button class="pledge-tier" data-amount="50000">$50K</button>
+            <button class="pledge-tier active" data-amount="100000">$100K</button>
+            <button class="pledge-tier" data-amount="500000">$500K</button>
+            <button class="pledge-tier" data-amount="1000000">$1M</button>
+          </div>
+          <div class="pledge-custom-row">
+            <span class="pledge-custom-prefix">USD</span>
+            <input class="pledge-custom-input" type="number" id="pledge-amount-input" value="100000" min="5000" step="5000" />
+          </div>
+          <div class="pledge-impact">
+            <div class="pledge-impact-label">Pool after your pledge</div>
+            <div class="pledge-impact-bar-wrap">
+              <div class="pledge-impact-bar">
+                <div class="pledge-impact-current" id="pledge-impact-current" style="width:74%"></div>
+                <div class="pledge-impact-new" id="pledge-impact-new" style="width:0.83%"></div>
+              </div>
+              <span class="threshold-label">Activation threshold</span>
+            </div>
+            <div class="pledge-impact-nums">
+              <span id="pledge-pool-after">$9.1M / $12M</span>
+              <span id="pledge-pct-after">75.8%</span>
+            </div>
+          </div>
+          <div class="pledge-nav">
+            <button class="btn pledge-next" id="pledge-step1-next">Continue <span class="arrow">→</span></button>
+          </div>
+        </div>
+
+        <!-- step 2: details -->
+        <div class="pledge-step" id="pledge-step-2" style="display:none">
+          <div class="pledge-case-label micro">STEP 2 OF 2 — YOUR DETAILS</div>
+          <h2>Complete your pledge.</h2>
+          <p class="pledge-deck">We need basic contact information to hold your pledge intent and notify you when the pool reaches threshold or closes.</p>
+          <form class="intake-form pledge-form" id="pledge-form" novalidate>
+            <label class="intake-label">Full name <input class="intake-input" type="text" id="pledge-name" placeholder="Full name" required /></label>
+            <label class="intake-label">Organisation <input class="intake-input" type="text" id="pledge-org" placeholder="Company, fund, or individual" /></label>
+            <label class="intake-label">Email <input class="intake-input" type="email" id="pledge-email" placeholder="you@domain.com" required /></label>
+            <label class="intake-label pledge-agree-label">
+              <input type="checkbox" id="pledge-agree" required />
+              <span>I understand this is a pledge of intent, not a binding financial commitment. Capital is drawn only on threshold activation.</span>
+            </label>
+            <div class="pledge-nav pledge-nav-two">
+              <button type="button" class="btn ghost" id="pledge-back">← Back</button>
+              <button type="submit" class="btn">Submit pledge <span class="arrow">→</span></button>
+            </div>
+          </form>
+        </div>
+
+        <!-- step 3: confirmed -->
+        <div class="pledge-step pledge-confirmed" id="pledge-step-3" style="display:none">
+          <div class="pledge-confirmed-icon">✓</div>
+          <h2>Pledge registered.</h2>
+          <div class="pledge-confirmed-amount" id="pledge-confirmed-amount">$100,000</div>
+          <p class="pledge-deck">Your intent has been logged. The pool now stands at <strong id="pledge-confirmed-pool">$9.1M</strong> — <strong id="pledge-confirmed-pct">75.8%</strong> of the <span id="pledge-confirmed-target">$12M</span> activation threshold.</p>
+          <div class="pledge-confirmed-terms">
+            <div class="pledge-term-row"><span class="k">Drawn if</span><span class="v" id="pledge-term-drawn">Pool reaches $12M by 2027.04.08</span></div>
+            <div class="pledge-term-row"><span class="k">Bonus if fails</span><span class="v">+6% on your pledged amount</span></div>
+            <div class="pledge-term-row"><span class="k">Confirmation</span><span class="v">Email sent to registered address</span></div>
+          </div>
+          <button class="btn ghost" data-close="page-modal-pledge" style="margin-top:24px">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- solver directory -->
+  <div class="page-modal-bg" id="page-modal-solvers">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-solvers">×</button>
+      <div class="page-modal-inner">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">SOLVER DIRECTORY</div>
+          <h2>Who solves here.</h2>
+          <p class="page-modal-deck">3,418 verified solvers across 47 countries. Individuals, labs, freelancers, and syndicates. Verified by domain credential, not by job title.</p>
+        </div>
+        <div class="solver-dir-stats">
+          <div class="solver-stat"><div class="solver-stat-n">3,418</div><div class="solver-stat-l">Verified solvers</div></div>
+          <div class="solver-stat"><div class="solver-stat-n">47</div><div class="solver-stat-l">Countries</div></div>
+          <div class="solver-stat"><div class="solver-stat-n">312</div><div class="solver-stat-l">Active syndicates</div></div>
+          <div class="solver-stat"><div class="solver-stat-n">89</div><div class="solver-stat-l">Bounties won</div></div>
+        </div>
+        <div class="solver-dir-grid">
+          <div class="solver-dir-col">
+            <h4 class="page-modal-section-label">Top domains</h4>
+            <div class="solver-domain-list">
+              <div class="solver-domain-row"><span>Computational biology</span><span class="solver-domain-n">418</span></div>
+              <div class="solver-domain-row"><span>Machine learning &amp; AI</span><span class="solver-domain-n">394</span></div>
+              <div class="solver-domain-row"><span>Materials science</span><span class="solver-domain-n">287</span></div>
+              <div class="solver-domain-row"><span>Public policy &amp; economics</span><span class="solver-domain-n">261</span></div>
+              <div class="solver-domain-row"><span>Civil &amp; structural engineering</span><span class="solver-domain-n">234</span></div>
+              <div class="solver-domain-row"><span>Clinical medicine</span><span class="solver-domain-n">219</span></div>
+              <div class="solver-domain-row"><span>Regulatory science</span><span class="solver-domain-n">188</span></div>
+              <div class="solver-domain-row"><span>Cryptography &amp; security</span><span class="solver-domain-n">174</span></div>
+              <div class="solver-domain-row"><span>Urban systems</span><span class="solver-domain-n">143</span></div>
+              <div class="solver-domain-row"><span>Geroscience &amp; longevity</span><span class="solver-domain-n">112</span></div>
+            </div>
+          </div>
+          <div class="solver-dir-col">
+            <h4 class="page-modal-section-label">How verification works</h4>
+            <div class="intake-step"><span class="intake-num">01</span><div><strong>Credential submission</strong><p>Published work, prior roles, or documented project outcomes. We verify against public records and institutional contacts.</p></div></div>
+            <div class="intake-step"><span class="intake-num">02</span><div><strong>Domain panel review</strong><p>A two-person panel from the relevant field assesses whether the credential is commensurate with the cases the applicant wants access to.</p></div></div>
+            <div class="intake-step"><span class="intake-num">03</span><div><strong>Tiered access</strong><p>Verified solvers gain access to full case briefs and sponsor data rooms. Syndicates are verified collectively with individual members listed.</p></div></div>
+            <div class="intake-step"><span class="intake-num">04</span><div><strong>Track record accrual</strong><p>Each case a solver participates in — win, lose, or consolation — builds a verified track record that sponsors can view before the case closes.</p></div></div>
+            <div style="margin-top:24px">
+              <button class="btn" data-open="page-modal-solver">Apply as a solver <span class="arrow">→</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- adjudication panel -->
+  <div class="page-modal-bg" id="page-modal-panel">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-panel">×</button>
+      <div class="page-modal-inner page-modal-reading">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">ADJUDICATION</div>
+          <h2>How winners are decided.</h2>
+          <p class="page-modal-deck">Every case has a panel of three to five domain experts disclosed before the bounty closes. They have no financial interest in the outcome. Their decision is final.</p>
+        </div>
+        <div class="handbook-body">
+          <div class="handbook-section">
+            <h3>Panel composition</h3>
+            <p>Each case panel is assembled at the time of listing — before solvers begin working. Panels consist of three to five people: domain experts with no equity relationship to the sponsor, no active solver participation in any open case on the platform, and no prior advisory relationship with ProblemMarket.</p>
+            <p>Panel members are named publicly. Anonymity is not an option. If a panelist cannot be named, they cannot serve.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Conflict of interest</h3>
+            <p>Every panel member signs a conflict-of-interest declaration at the time of appointment. The declaration covers financial interests, prior professional relationships with the sponsor, and any relationship with registered solvers on the case. Declarations are published alongside the panel list.</p>
+            <p>If a conflict emerges after appointment, the panelist is replaced. If a conflict is discovered after adjudication, the result is reviewed by the full editorial board. This has happened once. The result was upheld.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Scoring process</h3>
+            <p>Panels score against the pre-registered success criteria only. Each criterion is scored independently on a binary pass/fail basis, then aggregated. Partial credit is not awarded unless the original brief explicitly provides for it.</p>
+            <p>Panelists score independently before convening. Disagreements above a defined threshold trigger a structured deliberation session, the transcript of which is published in redacted form.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Appeals</h3>
+            <p>A solver may request a structured review within 14 days of a result. The review is conducted by a separate two-person panel who did not participate in the original adjudication. The review can only evaluate whether the scoring process followed the pre-registered criteria — it cannot re-weigh the criteria themselves.</p>
+            <p>The review panel's finding is final. ProblemMarket does not arbitrate beyond this point.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Consolation shares</h3>
+            <p>Where a losing solver's documented work materially informed the winning solution, the winning solver may voluntarily allocate a consolation share from their bounty. ProblemMarket facilitates but does not mandate this. Consolation shares have been paid in 14 of 89 resolved cases.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Join a panel</h3>
+            <p>We maintain a standing roster of domain experts willing to serve on adjudication panels. Time commitment is typically 12–20 hours per case. Panelists receive a flat honorarium of $8,000–$15,000 depending on case complexity. Contact <strong>panel@problemmarket.com</strong> to be considered.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- careers -->
+  <div class="page-modal-bg" id="page-modal-careers">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-careers">×</button>
+      <div class="page-modal-inner">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">CAREERS</div>
+          <h2>Work at ProblemMarket.</h2>
+          <p class="page-modal-deck">Small team. Genuinely hard work. We operate across Tampa, Oslo, and New York. We hire slowly and keep people for a long time.</p>
+        </div>
+        <div class="careers-grid">
+          <div class="career-card">
+            <div class="career-card-head">
+              <div class="career-title">Editorial Analyst</div>
+              <div class="career-meta"><span class="career-location">New York · Oslo</span><span class="career-type">Full-time</span></div>
+            </div>
+            <p class="career-desc">You run intake interviews. You read submissions, identify the real problem underneath the stated one, and write the verdicts — publish or decline. You need to be comfortable telling a Fortune 500 VP that their problem isn't a problem. Background in research, journalism, consulting, or science. Writing ability is non-negotiable.</p>
+            <button class="btn careers-apply" data-role="Editorial Analyst">Apply <span class="arrow">→</span></button>
+          </div>
+          <div class="career-card">
+            <div class="career-card-head">
+              <div class="career-title">Panel Coordinator</div>
+              <div class="career-meta"><span class="career-location">Remote · EST/CET</span><span class="career-type">Full-time</span></div>
+            </div>
+            <p class="career-desc">You recruit, vet, and manage the adjudication panels for active cases. You maintain the conflict-of-interest register, coordinate scoring sessions, and handle the structured review process when appeals are filed. Background in academic administration, legal operations, or scientific publishing preferred.</p>
+            <button class="btn careers-apply" data-role="Panel Coordinator">Apply <span class="arrow">→</span></button>
+          </div>
+          <div class="career-card">
+            <div class="career-card-head">
+              <div class="career-title">Solver Relations</div>
+              <div class="career-meta"><span class="career-location">Tampa · Remote</span><span class="career-type">Full-time</span></div>
+            </div>
+            <p class="career-desc">You are the first point of contact for solver applicants and active solver teams. You manage credential verification, facilitate data room access, and keep the solver community informed without compromising case integrity. You probably have a scientific background and enjoy talking to researchers.</p>
+            <button class="btn careers-apply" data-role="Solver Relations">Apply <span class="arrow">→</span></button>
+          </div>
+          <div class="career-card">
+            <div class="career-card-head">
+              <div class="career-title">Sponsor Development</div>
+              <div class="career-meta"><span class="career-location">New York · Tampa</span><span class="career-type">Full-time</span></div>
+            </div>
+            <p class="career-desc">You find the problems worth posting. That means identifying organisations sitting on a seven-figure unsolved question, getting in the room with the right person, and shepherding them through intake without overselling what the platform can do. This is not a traditional sales role — you need enough domain range to recognise a real problem when you hear one, and enough credibility to earn the conversation. Background in consulting, research, or venture preferred.</p>
+            <button class="btn careers-apply" data-role="Sponsor Development">Apply <span class="arrow">→</span></button>
+          </div>
+          <div class="career-card">
+            <div class="career-card-head">
+              <div class="career-title">Legal &amp; Escrow Operations</div>
+              <div class="career-meta"><span class="career-location">Oslo · New York</span><span class="career-type">Full-time</span></div>
+            </div>
+            <p class="career-desc">You manage the financial and legal scaffolding that makes the mechanism work. Dominant assurance contracts, escrow agreements, solver deposit structures, bounty disbursement, and the refund-plus-bonus flow when a pool fails to close. You coordinate with external counsel and escrow providers, and you own the documentation that sponsors and solvers sign. Background in fintech legal ops, structured finance, or commercial law. Comfort with novel contract structures is required.</p>
+            <button class="btn careers-apply" data-role="Legal & Escrow Operations">Apply <span class="arrow">→</span></button>
+          </div>
+          <div class="career-card career-card-open">
+            <div class="career-card-head">
+              <div class="career-title">General applications</div>
+              <div class="career-meta"><span class="career-location">Any office</span><span class="career-type">Open</span></div>
+            </div>
+            <p class="career-desc">We don't always know what we need before we meet someone worth hiring. If you think you belong here and can make a specific case for why, send a short letter and whatever evidence you think is relevant to <strong>work@problemmarket.com</strong>. No recruiters.</p>
+            <button class="btn ghost careers-apply" data-role="General">Write to us <span class="arrow">→</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- waitlist / email capture modal -->
+  <div class="waitlist-bg" id="waitlist-modal">
+    <div class="waitlist">
+      <button class="modal-close" id="waitlist-close">×</button>
+      <div id="waitlist-content-wrap">
+        <div class="waitlist-type" id="waitlist-type">NOTIFY</div>
+        <h3 id="waitlist-title">Get notified</h3>
+        <p id="waitlist-desc">Enter your email to stay updated.</p>
+        <form class="waitlist-form" id="waitlist-form" novalidate>
+          <input class="waitlist-input" type="email" id="waitlist-email" placeholder="you@domain.com" autocomplete="email" required />
+          <button type="submit" class="btn">Notify me <span class="arrow">→</span></button>
+        </form>
+        <p class="waitlist-fine">No spam. One email when it's live.</p>
+      </div>
+      <div class="waitlist-success" id="waitlist-success" style="display:none">
+        <div class="success-icon">✓</div>
+        <h3>You're on the list.</h3>
+        <p>We'll reach out when this launches in v0.2.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- submit a problem page-modal -->
+  <div class="page-modal-bg" id="page-modal-submit">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-submit">×</button>
+      <div class="page-modal-inner">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">INTAKE PROCESS</div>
+          <h2>Submit a problem.</h2>
+          <p class="page-modal-deck">Most problems that reach us aren't problems — they're symptoms. Our intake is designed to find the real bottleneck. Two hours of your time; no money required. We'll tell you honestly whether your problem belongs on the docket or not.</p>
+        </div>
+        <div class="page-modal-cols">
+          <div>
+            <h4 class="page-modal-section-label">What to expect</h4>
+            <div class="intake-step"><span class="intake-num">01</span><div><strong>Initial screen</strong><p>You submit a brief description below. Our team reviews within 48 hours and decides whether to proceed to a live interview. About 60% of submissions don't make it past here.</p></div></div>
+            <div class="intake-step"><span class="intake-num">02</span><div><strong>Two-hour interview</strong><p>A structured conversation with our editorial team. We strip away symptoms until we've found the actual problem. We'll challenge your assumptions — that's the point.</p></div></div>
+            <div class="intake-step"><span class="intake-num">03</span><div><strong>Docket decision (5 business days)</strong><p>A written verdict: publish, revise and resubmit, or decline with honest reasoning. 93% of submissions that reach interview are declined. The high bar is why the docket means something.</p></div></div>
+            <div class="intake-step"><span class="intake-num">04</span><div><strong>Public listing</strong><p>If accepted, we write the case brief together, set the success criteria, assemble the judging panel, and list it. Median time from intake to live: 11 days.</p></div></div>
+          </div>
+          <div>
+            <h4 class="page-modal-section-label">Submit your problem</h4>
+            <form class="intake-form" id="intake-form" novalidate>
+              <label class="intake-label">Your name <input class="intake-input" type="text" placeholder="Full name" required /></label>
+              <label class="intake-label">Organisation <input class="intake-input" type="text" placeholder="Company or institution" required /></label>
+              <label class="intake-label">Work email <input class="intake-input" type="email" placeholder="you@company.com" required /></label>
+              <label class="intake-label">Describe the problem in one sentence <textarea class="intake-input intake-textarea" placeholder="What specifically can't you solve, and what does solving it unlock?" required></textarea></label>
+              <label class="intake-label">Estimated value of a solution <input class="intake-input" type="text" placeholder="e.g. $5M in annual savings, or $30M market unlocked" /></label>
+              <button type="submit" class="btn intake-submit">Request intake interview <span class="arrow">→</span></button>
+            </form>
+            <div class="intake-success" id="intake-success" style="display:none">
+              <div class="success-icon">✓</div>
+              <h3>Request received.</h3>
+              <p>We'll review your submission and respond within 48 hours with a go / no-go on the intake interview.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- apply as solver page-modal -->
+  <div class="page-modal-bg" id="page-modal-solver">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-solver">×</button>
+      <div class="page-modal-inner">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">SOLVER REGISTRATION</div>
+          <h2>Apply as a solver.</h2>
+          <p class="page-modal-deck">Solvers are individuals, labs, freelance consultants, and syndicates. You don't need a company. You need a verifiable track record and a serious approach. We verify credentials before granting docket access.</p>
+        </div>
+        <div class="page-modal-cols">
+          <div>
+            <h4 class="page-modal-section-label">Who qualifies</h4>
+            <div class="intake-step"><span class="intake-num">→</span><div><strong>Domain experts</strong><p>Scientists, engineers, researchers, clinicians, operators. If you've solved hard problems in a field, you belong here.</p></div></div>
+            <div class="intake-step"><span class="intake-num">→</span><div><strong>Syndicates</strong><p>Groups of 2–10 people can register as a syndicate and bid collectively. One NDA, shared proceeds, defined internally.</p></div></div>
+            <div class="intake-step"><span class="intake-num">→</span><div><strong>Labs and institutions</strong><p>University labs, research institutes, and independent R&D shops can register as entities. We handle the legal scaffolding.</p></div></div>
+            <h4 class="page-modal-section-label" style="margin-top:28px">What you get</h4>
+            <ul class="solver-list">
+              <li>Access to full case briefs and sponsor data rooms</li>
+              <li>A refundable seriousness deposit system (not a fee)</li>
+              <li>Optional NDA for closed-source approaches</li>
+              <li>Consolation share if your work informs the winner</li>
+              <li>Public attribution (or anonymity — your choice)</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="page-modal-section-label">Register</h4>
+            <form class="intake-form" id="solver-form" novalidate>
+              <label class="intake-label">Full name <input class="intake-input" type="text" placeholder="Full name" required /></label>
+              <label class="intake-label">Work email <input class="intake-input" type="email" placeholder="you@domain.com" required /></label>
+              <label class="intake-label">Primary domain <input class="intake-input" type="text" placeholder="e.g. computational biology, materials science" required /></label>
+              <label class="intake-label">Registering as
+                <select class="intake-input intake-select">
+                  <option value="">— Select —</option>
+                  <option>Individual</option>
+                  <option>Syndicate (2–10 people)</option>
+                  <option>Lab or institution</option>
+                </select>
+              </label>
+              <label class="intake-label">Brief credential note <textarea class="intake-input intake-textarea" placeholder="Published work, past roles, or projects relevant to your domain." required></textarea></label>
+              <button type="submit" class="btn intake-submit">Apply for solver access <span class="arrow">→</span></button>
+            </form>
+            <div class="solver-success" id="solver-success" style="display:none">
+              <div class="success-icon">✓</div>
+              <h3>Application received.</h3>
+              <p>We verify credentials manually. Expect a response within 3–5 business days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- intake handbook page-modal -->
+  <div class="page-modal-bg" id="page-modal-handbook">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-handbook">×</button>
+      <div class="page-modal-inner page-modal-reading">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">READING ROOM</div>
+          <h2>The intake handbook.</h2>
+          <p class="page-modal-deck">Everything you need to know before submitting a problem — what we're looking for, what we're not, and how to present a bottleneck clearly enough that solvers can actually find it.</p>
+        </div>
+        <div class="handbook-body">
+          <div class="handbook-section">
+            <h3>Why most problem submissions fail</h3>
+            <p>The single most common failure mode: submitting a symptom, not a problem. "Our customer retention is dropping" is not a problem. "We cannot identify, with ≥80% accuracy, which customers will churn before their 90-day mark — and we've exhausted our feature-engineering options on 4 years of clickstream data" is a problem.</p>
+            <p>ProblemMarket exists for the second kind. If you can't yet write a one-sentence problem statement that includes a measurable threshold and a clear boundary around what you've already ruled out, you're not ready for intake.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>What makes a good case</h3>
+            <ul class="handbook-list">
+              <li><strong>Verifiable success criteria.</strong> The panel must be able to score a solution objectively. "Better UX" cannot be scored. "Task completion rate ≥92% in a blinded usability test of 200 participants" can be.</li>
+              <li><strong>Real stakes.</strong> We target problems where a solution creates $7M+ of value — revenue unlocked, cost avoided, or market created. Below that, the bounty economics don't work.</li>
+              <li><strong>Bounded scope.</strong> The problem must be solvable by a solver without access to your entire org. Data, context, and liaisons you can provide; organisational change management you cannot outsource.</li>
+              <li><strong>A willing sponsor.</strong> Someone at your organisation must own the problem publicly, approve the brief, and commit to a judging timeline. Anonymity of the sponsor is fine; absenteeism is not.</li>
+            </ul>
+          </div>
+          <div class="handbook-section">
+            <h3>The dominant assurance contract</h3>
+            <p>ProblemMarket uses a funding mechanism invented by economist Alex Tabarrok in 1998. Here's how it works:</p>
+            <ol class="handbook-list">
+              <li>A bounty threshold is set at the time of listing (e.g., $10M).</li>
+              <li>Funders — companies, funds, government bodies — pledge capital toward that threshold.</li>
+              <li>If the threshold is met, the pledges are locked into escrow and the bounty activates.</li>
+              <li>If the threshold is <em>not</em> met by the deadline, all pledges are refunded — plus a small bonus (typically 5–8%) paid out of ProblemMarket's reserve.</li>
+            </ol>
+            <p>The bonus flips the freeloader problem. Normally, companies wait to see if others will fund a public good before pledging. With dominant assurance, pledging early is the dominant strategy whether the pool fills or not. Early pledgers earn a guaranteed return if the pool fails. This is why pools fill.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>The judging panel</h3>
+            <p>Every case is adjudicated by a panel of three to five domain experts who are disclosed at the time of listing and who have no financial interest in the outcome. Panel members sign a conflict-of-interest declaration and are bound by the same NDA structure as solvers. The panel's decision is final; ProblemMarket does not adjudicate disputes beyond a one-time structured review.</p>
+          </div>
+          <div class="handbook-cta">
+            <p>Ready to submit?</p>
+            <button class="btn" data-open="page-modal-submit">Start intake process <span class="arrow">→</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- about page-modal -->
+  <div class="page-modal-bg" id="page-modal-about">
+    <div class="page-modal">
+      <button class="page-modal-close" data-close="page-modal-about">×</button>
+      <div class="page-modal-inner page-modal-reading">
+        <div class="page-modal-header">
+          <div class="micro page-modal-tag">ABOUT PROBLEMA</div>
+          <h2>What we are.</h2>
+          <p class="page-modal-deck">A marketplace for the world's most expensive unsolved problems. Not a consultancy. Not a prize foundation. Something in between — with a mechanism that makes it work when both of those usually don't.</p>
+        </div>
+        <div class="handbook-body">
+          <div class="handbook-section">
+            <h3>The premise</h3>
+            <p>Most hard organisational problems go unsolved not because no one can solve them, but because the right solver never finds out they exist. Big companies publish RFPs that are too vague to act on. Prize competitions attract the wrong people and take years to close. Consultants get hired to deliver reports, not answers.</p>
+            <p>ProblemMarket makes the problem the product. We publish it, price it, and hold the escrow until someone solves it to a standard that a neutral panel has pre-agreed to recognise.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>How we're structured</h3>
+            <p>ProblemMarket Holdings operates the marketplace and takes a 4% fee from winning solver payouts. We do not take equity. We do not retain IP. We do not consult for sponsors. The editorial board — which decides what gets listed — has no sponsors on it. The board of directors has no solvers on it.</p>
+            <p>We operate from Tampa, Oslo, and New York. The platform launched in 2024. Since then, $214M has been dispatched to 89 winning solver entities across 31 industries.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Editorial independence</h3>
+            <p>We decline problems from companies we have financial relationships with. We publish the judging panel before the bounty closes so sponsors cannot influence the outcome by threatening to withdraw. Our editorial standards are published and updated publicly.</p>
+            <p>If a sponsor asks us to remove a listing after it goes live, we decline. The docket is a public record. The only exception is a court order, and we publish those too.</p>
+          </div>
+          <div class="handbook-section">
+            <h3>Contact</h3>
+            <p>For press inquiries, partnership discussions, or complaints: <strong>press@problemmarket.com</strong>. For intake submissions, use the form. For solver applications, use the solver registration flow. We do not have a general support line.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
