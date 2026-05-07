@@ -2114,3 +2114,110 @@ footer {
   .pledge-flow { padding: 28px 24px; }
   .pledge-custom-input { font-size: 22px; }
 }
+
+/* ------------------------------------------------------------
+   For solvers section — pie-growing pitch + AI/human framing
+   ------------------------------------------------------------ */
+.for-solvers {
+  border-top: 1px solid var(--rule);
+  padding: 88px 0 96px;
+  background: var(--paper);
+  position: relative;
+}
+.for-solvers .inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.for-solvers-head {
+  margin-bottom: 56px;
+  max-width: 820px;
+}
+.for-solvers-tag {
+  margin-bottom: 18px;
+}
+.for-solvers-head h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 380;
+  font-size: clamp(34px, 4vw, 56px);
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+  margin-bottom: 24px;
+}
+.for-solvers-head .deck {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 700px;
+}
+.solver-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 60px;
+}
+.solver-prop {
+  border-top: 2px solid var(--ink);
+  padding-top: 18px;
+}
+.solver-prop-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-fade);
+  margin-bottom: 12px;
+}
+.solver-prop h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 420;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.solver-prop p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.solver-note {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.solver-note-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-fade);
+}
+.solver-note-body p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin-bottom: 12px;
+}
+.solver-note-body p:last-child { margin-bottom: 0; }
+
+@media (max-width: 1100px) {
+  .solver-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .solver-note { grid-template-columns: 1fr; gap: 14px; }
+}
+@media (max-width: 700px) {
+  .for-solvers { padding: 60px 0 70px; }
+  .for-solvers-head { margin-bottom: 40px; }
+  .solver-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 44px; }
+}
+
+/* small founder credit in footer */
+.footer-edited {
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-fade);
+}
