@@ -1,12 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabaseBrowser } from '@/lib/supabase/browser';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
+
+  // If we land here with a session already established (e.g. magic-link hash
+  // tokens auto-processed by supabase-js on init, or a returning user),
+  // bounce to /dashboard. This is what makes admin-generated implicit-flow
+  // links work — the hash is parsed client-side, session cookies are written,
+  // and we redirect to the authenticated area.
+  useEffect(() => {
+    const sb = supabaseBrowser();
+    sb.auth.getSession().then(({ data }) => {
+      if (data.session) {
+        const next = new URLSearchParams(window.location.search).get('next') || '/dashboard';
+        window.location.replace(next);
+      }
+    });
+  }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
