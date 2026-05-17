@@ -1,0 +1,98 @@
+/* Minimal shared styles for the Next.js admin / dashboard / login pages.
+   The marketing landing has its own full stylesheet at /styles.css and is
+   served as a static file — it does not import this. */
+
+:root {
+  --cream: #f5f1ea;
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --rule: #d8d0c2;
+  --signal: #c5392a;
+  --signal-deep: #9c2c1f;
+  --paper: #fdfaf3;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--signal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; margin: 0 0 0.6em; }
+h1 { font-size: 36px; line-height: 1.1; }
+h2 { font-size: 26px; line-height: 1.2; }
+h3 { font-size: 19px; }
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+
+.shell { max-width: 1100px; margin: 0 auto; padding: 48px 32px; }
+.shell-narrow { max-width: 540px; margin: 0 auto; padding: 64px 24px; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 10px 18px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.btn:hover { background: var(--signal); border-color: var(--signal); text-decoration: none; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { color: var(--paper); }
+
+.field { display: block; margin-bottom: 16px; }
+.field > span { display: block; margin-bottom: 6px; font-size: 13px; color: var(--ink-soft); }
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-family: inherit;
+  font-size: 15px;
+  border-radius: 2px;
+}
+.input:focus { outline: none; border-color: var(--signal); }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 32px; border-bottom: 1px solid var(--rule);
+}
+.topbar .brand { font-family: 'Fraunces', serif; font-size: 18px; color: var(--ink); }
+.topbar nav a { margin-left: 18px; color: var(--ink); font-size: 14px; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); font-size: 14px; }
+th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--ink-soft); letter-spacing: 0.08em; }
+.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border: 1px solid var(--rule); border-radius: 99px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+.pill.open { background: #f5e9d6; }
+.pill.funded { background: #d8e6d2; }
+.pill.card_on_file { background: #d8e6d2; }
+.pill.charged { background: #c5392a; color: white; border-color: #c5392a; }
+.pill.failed, .pill.cancelled, .pill.refunded { background: #f0d4d0; }
+
+.notice {
+  border-left: 3px solid var(--signal);
+  background: var(--paper);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+}

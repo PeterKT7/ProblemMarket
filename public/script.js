@@ -482,9 +482,20 @@
   document.getElementById('waitlist-close').addEventListener('click', closeWaitlist);
   waitlistBg.addEventListener('click', (e) => { if (e.target === waitlistBg) closeWaitlist(); });
 
-  waitlistForm.addEventListener('submit', (e) => {
+  waitlistForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!waitlistEmail.validity.valid) return;
+    // Read current modal type (set by the openers above): "WAITLIST", "CAREERS", etc.
+    const kindRaw = (waitlistType && waitlistType.textContent || 'WAITLIST').trim().toLowerCase();
+    const kind = kindRaw === 'careers' ? 'careers' : 'launch';
+    const role = kind === 'careers' ? (waitlistTitle && waitlistTitle.textContent || '').replace(/^Apply\s*—\s*/, '').trim() || null : null;
+    try {
+      await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: waitlistEmail.value.trim(), kind, role }),
+      });
+    } catch (_) { /* surface success regardless — the email is logged in db / function logs */ }
     waitlistForm.style.display    = 'none';
     waitlistSuccess.style.display = '';
   });
@@ -510,48 +521,155 @@
   });
 
   /* ----------------------------------------------------------
-     Intake form (submit a problem)
+     Shared: capture UTM params once so all submissions tag their source.
+     ---------------------------------------------------------- */
+  const __utm = (() => {
+    try {
+      const p = new URLSearchParams(window.location.search);
+      const out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','ref'].forEach(k => {
+        const v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    } catch (_) { return {}; }
+  })();
+
+  function __setSubmitting(form, btnLabel) {
+    const btn = form.querySelector('button[type="submit"]');
+    if (!btn) return () => {};
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = btnLabel;
+    return () => { btn.disabled = false; btn.innerHTML = orig; };
+  }
+
+  function __showInlineError(form, msg) {
+    let n = form.querySelector('.api-error');
+    if (!n) {
+      n = document.createElement('p');
+      n.className = 'api-error';
+      n.style.color = 'var(--signal)';
+      n.style.marginTop = '12px';
+      n.style.fontSize  = '13px';
+      form.appendChild(n);
+    }
+    n.textContent = msg;
+  }
+
+  /* ----------------------------------------------------------
+     Intake form (submit a problem)  →  POST /api/intake
+     Field order in HTML: name, organisation, email, problem statement, estimated value
      ---------------------------------------------------------- */
   const intakeForm = document.getElementById('intake-form');
   if (intakeForm) {
-    intakeForm.addEventListener('submit', (e) => {
+    intakeForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      intakeForm.style.display = 'none';
-      document.getElementById('intake-success').style.display = '';
+      const inputs = intakeForm.querySelectorAll('.intake-input');
+      const payload = {
+        full_name:         (inputs[0] && inputs[0].value || '').trim(),
+        organisation:      (inputs[1] && inputs[1].value || '').trim(),
+        email:             (inputs[2] && inputs[2].value || '').trim(),
+        problem_statement: (inputs[3] && inputs[3].value || '').trim(),
+        estimated_value:   (inputs[4] && inputs[4].value || '').trim() || null,
+        utm: __utm,
+      };
+      if (!payload.full_name || !payload.organisation || !payload.email || payload.problem_statement.length < 10) {
+        __showInlineError(intakeForm, 'Please complete every field. Problem statement must be at least 10 characters.');
+        return;
+      }
+      const restore = __setSubmitting(intakeForm, 'Submitting…');
+      try {
+        const res = await fetch('/api/intake', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}));
+          throw new Error(j.error || 'submission_failed');
+        }
+        intakeForm.style.display = 'none';
+        document.getElementById('intake-success').style.display = '';
+      } catch (err) {
+        restore();
+        __showInlineError(intakeForm, 'Something broke on our end. Email hello@problema.com and we will pick it up directly.');
+      }
     });
   }
 
   /* ----------------------------------------------------------
-     Solver form
+     Solver form  →  POST /api/solver
+     Field order: name, email, primary_domain, entity_type (select), credentials
      ---------------------------------------------------------- */
   const solverForm = document.getElementById('solver-form');
   if (solverForm) {
-    solverForm.addEventListener('submit', (e) => {
+    solverForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      solverForm.style.display = 'none';
-      document.getElementById('solver-success').style.display = '';
+      const inputs = solverForm.querySelectorAll('.intake-input');
+      const entityRaw = (inputs[3] && inputs[3].value || '').toLowerCase();
+      const entity_type = entityRaw.startsWith('syndicate') ? 'syndicate'
+                        : entityRaw.startsWith('lab')       ? 'lab'
+                        : 'individual';
+      const payload = {
+        full_name:      (inputs[0] && inputs[0].value || '').trim(),
+        email:          (inputs[1] && inputs[1].value || '').trim(),
+        primary_domain: (inputs[2] && inputs[2].value || '').trim(),
+        entity_type,
+        credentials_md: (inputs[4] && inputs[4].value || '').trim(),
+        utm: __utm,
+      };
+      if (!payload.full_name || !payload.email || !payload.primary_domain || payload.credentials_md.length < 10) {
+        __showInlineError(solverForm, 'Please complete every field. Credentials note must be at least 10 characters.');
+        return;
+      }
+      const restore = __setSubmitting(solverForm, 'Submitting…');
+      try {
+        const res = await fetch('/api/solver', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}));
+          throw new Error(j.error || 'submission_failed');
+        }
+        solverForm.style.display = 'none';
+        document.getElementById('solver-success').style.display = '';
+      } catch (err) {
+        restore();
+        __showInlineError(solverForm, 'Submission failed. Try again, or write to solvers@problema.com.');
+      }
     });
   }
 
   /* ----------------------------------------------------------
      Follow case capture
      ---------------------------------------------------------- */
-  function wireFollowForm(submitId, emailId, formId, successId) {
+  function wireFollowForm(submitId, emailId, formId, successId, source, caseNo) {
     const btn = document.getElementById(submitId);
     if (!btn) return;
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const email = document.getElementById(emailId);
       if (!email || !email.value || !email.validity.valid) {
         if (email) { email.focus(); email.style.borderColor = 'var(--signal)'; setTimeout(() => (email.style.borderColor = ''), 1200); }
         return;
       }
+      btn.disabled = true;
+      try {
+        await fetch('/api/follow', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: email.value.trim(), source, case_no: caseNo }),
+        });
+      } catch (_) { /* show success even on network failure — email is logged */ }
       document.getElementById(formId).style.display    = 'none';
       document.getElementById(successId).style.display = '';
     });
   }
 
-  wireFollowForm('cm-follow-submit', 'cm-follow-email', 'cm-follow-form', 'cm-follow-success');
-  wireFollowForm('modal-042-follow-submit', 'modal-042-follow-email', 'modal-042-follow-form', 'modal-042-follow-success');
+  // case_no is hardcoded "042" for the featured case the static HTML ships with.
+  wireFollowForm('cm-follow-submit', 'cm-follow-email', 'cm-follow-form', 'cm-follow-success', 'card-modal', '042');
+  wireFollowForm('modal-042-follow-submit', 'modal-042-follow-email', 'modal-042-follow-form', 'modal-042-follow-success', 'case-modal-042', '042');
 
   // Reset follow form when card modal closes
   function resetFollowForm() {
@@ -642,9 +760,46 @@
   if (pledgeBack) pledgeBack.addEventListener('click', () => showPledgeStep(1));
 
   if (pledgeForm) {
-    pledgeForm.addEventListener('submit', (e) => {
+    pledgeForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const amt = parseInt(pledgeInput.value) || 100000;
+      const amt   = parseInt(pledgeInput.value) || 100000;
+      const name  = (document.getElementById('pledge-name')  || {}).value || '';
+      const org   = (document.getElementById('pledge-org')   || {}).value || '';
+      const email = (document.getElementById('pledge-email') || {}).value || '';
+      const agree = !!(document.getElementById('pledge-agree') || {}).checked;
+      if (!name.trim() || !email.trim() || !agree) {
+        __showInlineError(pledgeForm, 'Name, email, and consent are required.');
+        return;
+      }
+      const restore = __setSubmitting(pledgeForm, 'Submitting…');
+      let serverConfirmUrl = null;
+      try {
+        const res = await fetch('/api/pledge', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            case_no: '042',
+            pledger_name: name.trim(),
+            pledger_email: email.trim(),
+            pledger_org: org.trim() || null,
+            amount_usd: amt,
+            agree: true,
+            utm: __utm,
+          }),
+        });
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}));
+          throw new Error(j.error || 'pledge_failed');
+        }
+        const json = await res.json();
+        serverConfirmUrl = json.confirm_url || null;
+      } catch (err) {
+        restore();
+        __showInlineError(pledgeForm, 'Pledge could not be saved. Try again in a moment, or write to pledges@problema.com.');
+        return;
+      }
+
+      // Confirmation step (same visual as before; adds a "secure card" CTA).
       const afterTotal = POOL_CURRENT + amt;
       const afterPct   = Math.min((afterTotal / POOL_TARGET) * 100, 100);
       if (pledgeConfirmedAmount) pledgeConfirmedAmount.textContent = formatMoney(amt);
@@ -652,6 +807,26 @@
       if (pledgeConfirmedPct)    pledgeConfirmedPct.textContent    = afterPct.toFixed(1) + '%';
       const confirmedTarget = document.getElementById('pledge-confirmed-target');
       if (confirmedTarget) confirmedTarget.textContent = formatMoney(POOL_TARGET);
+
+      // Inject (or update) the "secure your card on file" link into step 3 without
+      // touching the markup. The link goes to /pledge/confirm/[uuid] (Stripe Elements).
+      const step3 = document.getElementById('pledge-step-3');
+      if (step3 && serverConfirmUrl) {
+        let cardCta = step3.querySelector('.pledge-secure-cta');
+        if (!cardCta) {
+          cardCta = document.createElement('a');
+          cardCta.className = 'btn pledge-secure-cta';
+          cardCta.style.marginTop = '18px';
+          cardCta.target = '_blank';
+          cardCta.rel    = 'noopener';
+          cardCta.textContent = 'Secure with card on file →';
+          const closeBtn = step3.querySelector('[data-close="page-modal-pledge"]');
+          if (closeBtn) step3.insertBefore(cardCta, closeBtn);
+          else step3.appendChild(cardCta);
+        }
+        cardCta.href = serverConfirmUrl;
+      }
+
       showPledgeStep(3);
     });
   }

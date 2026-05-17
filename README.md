@@ -2,7 +2,9 @@
 
 A curated marketplace MVP for seven-, eight-, and nine-figure quandaries that companies can't solve in-house. Solvers — labs, freelancers, syndicates — bid, build, and claim the bounty. Funded via dominant assurance contracts.
 
-> **v0.1 — MVP** · Static frontend only. Pledge flow, intake form, and solver registration are stubbed for v0.2.
+> **v0.2** — Next.js + Supabase + Stripe backend. Pledge / intake / solver / waitlist / follow forms are live. Admin dashboard at `/admin`, sponsor dashboard at `/dashboard`, magic-link auth at `/login`, Stripe card-on-file at `/pledge/confirm/[id]`.
+>
+> **First-time setup:** see [`SETUP.md`](./SETUP.md) — ~45 min from clone to accepting real pledges on `problemamvp.vercel.app`.
 
 ---
 
