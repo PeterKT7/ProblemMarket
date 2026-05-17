@@ -93,9 +93,12 @@
      Filter + sort chips — live card filtering
      ---------------------------------------------------------- */
   const grid = document.querySelector('.problem-grid');
-  const allCards = Array.from(grid.querySelectorAll('.problem-card'));
+  // Re-query the cards on every apply so the filter still works after the
+  // docket is hydrated from /api/cases (which replaces grid.innerHTML).
+  const getAllCards = () => Array.from(grid.querySelectorAll('.problem-card'));
 
   function applyFilterSort() {
+    const allCards = getAllCards();
     const filterVal = document.querySelector('.chip[data-group="filter"].active').textContent.trim().toLowerCase();
     const sortVal   = document.querySelector('.chip[data-group="sort"].active').textContent.trim().toLowerCase();
 
@@ -108,7 +111,7 @@
       return 0;
     });
 
-    allCards.forEach(c => c.remove());
+    getAllCards().forEach(c => c.remove());
     visible.forEach(c => grid.appendChild(c));
 
     let empty = grid.querySelector('.no-results');
@@ -374,36 +377,98 @@
   document.getElementById('close-card-modal').addEventListener('click', closeCardModal);
   cardModal.addEventListener('click', (e) => { if (e.target === cardModal) closeCardModal(); });
 
-  // Cmd/Ctrl+click on a card opens its dedicated shareable page in a new tab.
-  // Plain click still opens the in-page modal so nothing about the current UX changes.
-  document.querySelectorAll('.problem-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey || e.button === 1) {
-        const caseNo = card.dataset.caseId || (card.dataset.case || '').padStart(3, '0');
-        if (caseNo) { window.open('/cases/' + caseNo, '_blank'); return; }
-      }
-    });
-    // Add a small "open in own page →" link below each card for the non-power-user path.
-    if (!card.querySelector('.card-permalink')) {
+  // Bind card click handlers + permalink. Called once for the SSR'd fallback
+  // cards and again after hydrateDocket() replaces the grid with live data.
+  function bindCards() {
+    document.querySelectorAll('.problem-card').forEach(card => {
+      if (card.dataset.bound === '1') return; // idempotent
+      card.dataset.bound = '1';
+
       const caseNo = card.dataset.caseId || (card.dataset.case || '').padStart(3, '0');
-      if (caseNo) {
+
+      card.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.button === 1) {
+          if (caseNo) { window.open('/cases/' + caseNo, '_blank'); return; }
+        }
+        // Plain click → legacy in-page modal (Case 042 detail). Replace this
+        // with `window.location = '/cases/' + caseNo` once every card has a
+        // dedicated brief written.
+        const id = card.dataset.caseId;
+        if (id) openCardModal(id);
+      });
+
+      // Small mono permalink under each card for non-power-users.
+      if (!card.querySelector('.card-permalink') && caseNo) {
         const link = document.createElement('a');
         link.className = 'card-permalink';
         link.href = '/cases/' + caseNo;
         link.textContent = 'Open Case ' + caseNo + ' →';
         link.style.cssText = 'display:block;margin-top:10px;font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);text-decoration:none;';
-        link.addEventListener('click', (ev) => ev.stopPropagation()); // don't open the modal too
+        link.addEventListener('click', (ev) => ev.stopPropagation());
         card.appendChild(link);
       }
-    }
-  });
-  // Legacy modal binding retained below for backwards compat with existing card-modal behavior.
-  document.querySelectorAll('.problem-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.dataset.caseId;
-      if (id) openCardModal(id);
     });
-  });
+  }
+  bindCards();
+
+  // Hydrate the docket from /api/cases so /admin edits show on the homepage
+  // immediately. The hardcoded HTML cards stay as a no-JS / offline fallback;
+  // we replace them on successful fetch.
+  (async function hydrateDocket() {
+    try {
+      const res = await fetch('/api/cases', { cache: 'no-store' });
+      if (!res.ok) return;
+      const json = await res.json();
+      const cases = json.cases;
+      if (!Array.isArray(cases) || cases.length === 0) return;
+
+      const escHTML = (s) => (s == null ? '' : String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])));
+      const fmtBounty = (cents) => {
+        const m = Number(cents) / 100_000_000;
+        return m >= 10 ? m.toFixed(1) : m.toFixed(1).replace(/\.0$/, '');
+      };
+      const daysLeftLabel = (deadline) => {
+        if (!deadline) return '';
+        const ms = new Date(deadline + 'T00:00:00Z').getTime() - Date.now();
+        const d = Math.ceil(ms / 86400000);
+        return d > 0 ? d + ' days left' : 'closed';
+      };
+
+      const html = cases.map((c) => {
+        const stampClass = c.status === 'funded' ? 'funded' : c.status === 'dispatched' ? 'dispatched' : '';
+        const bounty = fmtBounty(c.bounty_amount_cents);
+        const days = daysLeftLabel(c.deadline);
+        const sponsor = c.sponsor_label || c.one_liner || '';
+        return `
+          <article class="problem-card reveal" data-status="${c.status}"
+                   data-bounty="${(Number(c.bounty_amount_cents) / 100_000_000).toFixed(1)}"
+                   data-case="${parseInt(c.case_no, 10)}" data-solvers="0"
+                   data-case-id="${escHTML(c.case_no)}">
+            <div class="card-head">
+              <span class="case-no">Case ${escHTML(c.case_no)}</span>
+              <span class="stamp ${stampClass}">${escHTML(c.status.toUpperCase())}</span>
+            </div>
+            <h3>${escHTML(c.title)}</h3>
+            <p class="sponsor">${escHTML(sponsor)}</p>
+            <div class="card-foot">
+              <div class="bounty"><span class="c">$</span>${bounty}M</div>
+              <div class="right"><br/><strong>${escHTML(days)}</strong></div>
+            </div>
+          </article>`;
+      }).join('');
+
+      grid.innerHTML = html;
+
+      // Re-bind everything that depends on the new card DOM
+      bindCards();
+      grid.querySelectorAll('.reveal').forEach((el) => {
+        el.classList.add('is-visible'); // skip the scroll-in animation on hydration
+      });
+    } catch (e) {
+      // Leave the SSR fallback cards in place; the hardcoded set still matches
+      // the DB after our manual sync, so the homepage doesn't break.
+    }
+  })();
 
   // If we got here from /cases/<n> with ?pledge=<n>, auto-open the pledge modal.
   // Lets the case page CTA work end-to-end without a code path on the static landing.
