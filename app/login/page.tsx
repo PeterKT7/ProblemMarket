@@ -13,14 +13,35 @@ export default function LoginPage() {
   // bounce to /dashboard. This is what makes admin-generated implicit-flow
   // links work — the hash is parsed client-side, session cookies are written,
   // and we redirect to the authenticated area.
+  //
+  // Also surface expired/invalid magic-link errors that arrive in the URL
+  // hash (Supabase puts them there on `verify` failure). Without this, the
+  // unhandled rejection from supabase-js triggers Next.js's red-screen
+  // "Application error" overlay and the user thinks the site is broken.
   useEffect(() => {
-    const sb = supabaseBrowser();
-    sb.auth.getSession().then(({ data }) => {
-      if (data.session) {
-        const next = new URLSearchParams(window.location.search).get('next') || '/dashboard';
-        window.location.replace(next);
+    try {
+      const hash = window.location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(hash);
+      const err = params.get('error_description') || params.get('error');
+      if (err) {
+        setError(decodeURIComponent(err).replace(/\+/g, ' '));
+        // Clear the hash so the error doesn't survive a refresh.
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+        return;
       }
-    });
+    } catch { /* ignore — best-effort */ }
+
+    const sb = supabaseBrowser();
+    sb.auth.getSession()
+      .then(({ data }) => {
+        if (data.session) {
+          const next = new URLSearchParams(window.location.search).get('next') || '/dashboard';
+          window.location.replace(next);
+        }
+      })
+      .catch((e: unknown) => {
+        setError(e instanceof Error ? e.message : 'session_read_failed');
+      });
   }, []);
 
   async function onSubmit(e: React.FormEvent) {
