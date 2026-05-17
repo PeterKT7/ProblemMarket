@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { isAdmin, getCurrentUser } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { DecisionButtons } from './DecisionButtons';
 
 export const dynamic = 'force-dynamic';
 
@@ -111,7 +112,7 @@ export default async function AdminPage() {
         <section style={{ marginTop: 32 }}>
           <h2>Intake submissions</h2>
           <table>
-            <thead><tr><th>When</th><th>Org</th><th>Contact</th><th>Value</th><th>Status</th></tr></thead>
+            <thead><tr><th>When</th><th>Org</th><th>Contact</th><th>Value</th><th>Status</th><th>Decision</th></tr></thead>
             <tbody>
               {(intakeRes.data ?? []).map((r: any) => (
                 <tr key={r.id}>
@@ -120,6 +121,7 @@ export default async function AdminPage() {
                   <td>{r.full_name}<br /><span style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{r.email}</span></td>
                   <td>{r.estimated_value ?? '—'}</td>
                   <td><span className={`pill ${r.status}`}>{r.status}</span></td>
+                  <td><DecisionButtons kind="intake" id={r.id} current={r.status} /></td>
                 </tr>
               ))}
             </tbody>
@@ -129,7 +131,7 @@ export default async function AdminPage() {
         <section style={{ marginTop: 32 }}>
           <h2>Solver applications</h2>
           <table>
-            <thead><tr><th>When</th><th>Name</th><th>Domain</th><th>Type</th><th>Status</th></tr></thead>
+            <thead><tr><th>When</th><th>Name</th><th>Domain</th><th>Type</th><th>Status</th><th>Decision</th></tr></thead>
             <tbody>
               {(solverRes.data ?? []).map((r: any) => (
                 <tr key={r.id}>
@@ -138,6 +140,7 @@ export default async function AdminPage() {
                   <td>{r.primary_domain}</td>
                   <td>{r.entity_type}</td>
                   <td><span className={`pill ${r.status}`}>{r.status}</span></td>
+                  <td><DecisionButtons kind="solver" id={r.id} current={r.status} /></td>
                 </tr>
               ))}
             </tbody>
