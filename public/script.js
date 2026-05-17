@@ -459,11 +459,12 @@
 
       grid.innerHTML = html;
 
-      // Re-bind everything that depends on the new card DOM
+      // Re-bind everything that depends on the new card DOM. The reveal
+      // animation uses .reveal + .in (NOT .is-visible — that's invented). Add
+      // .in immediately so the freshly-rendered cards are not invisible
+      // (without this they sit at opacity:0 and the docket appears blank).
       bindCards();
-      grid.querySelectorAll('.reveal').forEach((el) => {
-        el.classList.add('is-visible'); // skip the scroll-in animation on hydration
-      });
+      grid.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
     } catch (e) {
       // Leave the SSR fallback cards in place; the hardcoded set still matches
       // the DB after our manual sync, so the homepage doesn't break.
