@@ -405,6 +405,22 @@
     });
   });
 
+  // If we got here from /cases/<n> with ?pledge=<n>, auto-open the pledge modal.
+  // Lets the case page CTA work end-to-end without a code path on the static landing.
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const wantPledge = params.get('pledge');
+    if (wantPledge) {
+      const modal = document.getElementById('page-modal-pledge');
+      const caseLabel = document.getElementById('pledge-case-label');
+      if (caseLabel) caseLabel.textContent = 'Case ' + wantPledge;
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  } catch (_) { /* ignore */ }
+
   /* ----------------------------------------------------------
      Page modals (submit problem, apply solver, handbook, about, pledge)
      ---------------------------------------------------------- */
