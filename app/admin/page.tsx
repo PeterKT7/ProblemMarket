@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { isAdmin, getCurrentUser } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { DecisionButtons } from './DecisionButtons';
+import { CaseEditButton } from './CaseEditor';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,7 +29,7 @@ export default async function AdminPage() {
 
   const sb = supabaseAdmin();
   const [casesRes, intakeRes, solverRes, pledgesRes, waitlistRes, followsRes] = await Promise.all([
-    sb.from('cases').select('id, case_no, title, status, pool_target_cents, pool_current_cents, bounty_amount_cents, featured, deadline').order('case_no', { ascending: false }),
+    sb.from('cases').select('id, case_no, title, one_liner, sponsor_label, brief_md, success_criteria_md, ruled_out_md, what_sponsors_provide_md, status, pool_target_cents, pool_current_cents, bounty_amount_cents, featured, deadline').order('case_no', { ascending: false }),
     sb.from('intake_submissions').select('id, full_name, organisation, email, estimated_value, status, created_at').order('created_at', { ascending: false }).limit(50),
     sb.from('solver_applications').select('id, full_name, email, primary_domain, entity_type, status, created_at').order('created_at', { ascending: false }).limit(50),
     sb.from('pledges').select('id, case_no_snapshot, pledger_name, pledger_email, pledger_org, amount_cents, status, stripe_payment_method_id, created_at').order('created_at', { ascending: false }).limit(100),
@@ -67,7 +68,7 @@ export default async function AdminPage() {
         <section>
           <h2>Cases</h2>
           <table>
-            <thead><tr><th>Nº</th><th>Title</th><th>Status</th><th>Pool</th><th>Threshold</th><th>Bounty</th><th>Deadline</th></tr></thead>
+            <thead><tr><th>Nº</th><th>Title</th><th>Status</th><th>Pool</th><th>Threshold</th><th>Bounty</th><th>Deadline</th><th></th><th></th></tr></thead>
             <tbody>
               {(casesRes.data ?? []).map((c: any) => {
                 const pct = c.pool_target_cents > 0 ? Math.round((Number(c.pool_current_cents) / Number(c.pool_target_cents)) * 100) : 0;
@@ -80,6 +81,8 @@ export default async function AdminPage() {
                     <td>{money(c.pool_target_cents)}</td>
                     <td>{money(c.bounty_amount_cents)}</td>
                     <td>{c.deadline ?? '—'}</td>
+                    <td><a href={`/cases/${c.case_no}`} target="_blank" rel="noopener" style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', textTransform: 'uppercase', color: 'var(--signal)' }}>View ↗</a></td>
+                    <td><CaseEditButton row={c} /></td>
                   </tr>
                 );
               })}
