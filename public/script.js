@@ -374,6 +374,30 @@
   document.getElementById('close-card-modal').addEventListener('click', closeCardModal);
   cardModal.addEventListener('click', (e) => { if (e.target === cardModal) closeCardModal(); });
 
+  // Cmd/Ctrl+click on a card opens its dedicated shareable page in a new tab.
+  // Plain click still opens the in-page modal so nothing about the current UX changes.
+  document.querySelectorAll('.problem-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.button === 1) {
+        const caseNo = card.dataset.caseId || (card.dataset.case || '').padStart(3, '0');
+        if (caseNo) { window.open('/cases/' + caseNo, '_blank'); return; }
+      }
+    });
+    // Add a small "open in own page →" link below each card for the non-power-user path.
+    if (!card.querySelector('.card-permalink')) {
+      const caseNo = card.dataset.caseId || (card.dataset.case || '').padStart(3, '0');
+      if (caseNo) {
+        const link = document.createElement('a');
+        link.className = 'card-permalink';
+        link.href = '/cases/' + caseNo;
+        link.textContent = 'Open Case ' + caseNo + ' →';
+        link.style.cssText = 'display:block;margin-top:10px;font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);text-decoration:none;';
+        link.addEventListener('click', (ev) => ev.stopPropagation()); // don't open the modal too
+        card.appendChild(link);
+      }
+    }
+  });
+  // Legacy modal binding retained below for backwards compat with existing card-modal behavior.
   document.querySelectorAll('.problem-card').forEach(card => {
     card.addEventListener('click', () => {
       const id = card.dataset.caseId;
